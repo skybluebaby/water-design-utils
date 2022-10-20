@@ -5,7 +5,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js",
+    "clean:win": "rimraf dist",
+    "clean:mac": "rm -rf dist"
   },
   "repository": {
     "type": "git",
