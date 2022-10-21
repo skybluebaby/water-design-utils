@@ -1,8 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
     node: true,
+    es2021: true,
     es6: true,
   },
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
@@ -18,5 +18,6 @@ module.exports = {
     eqeqeq: 1, //必须使用全等
     'global-require': 1, // 所有调用require()都位于模块的顶层
     '@typescript-eslint/no-var-requires': 0, //允许require导入模块
+    '@typescript-eslint/no-explicit-any': ['off'], // 允许使用any
   },
 };

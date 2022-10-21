@@ -7,12 +7,12 @@
     "strictNullChecks": true,
     "module": "esnext",
     "target": "es5",
-    "lib": ["es6"],
+    "lib": ["es2021", "dom"],
     "baseUrl": "./",
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true
   },
-  "includes": ["src", "./index.d.ts"],
+  "includes": ["src"],
   "exclude": ["node_modules", "dist"]
 }
