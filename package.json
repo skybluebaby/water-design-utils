@@ -1,6 +1,6 @@
 {
   "name": "water-design-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一个javascript工具库",
   "main": "./dist/index.js",
   "types": "./src/index.d.ts",
