@@ -2,8 +2,11 @@
   "name": "water-design-utils",
   "version": "1.0.1",
   "description": "一个javascript工具库",
-  "main": "./dist/index.js",
-  "types": "./src/index.d.ts",
+  "main": "./dist/index.min.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "clean:win": "rimraf dist",
@@ -26,7 +29,9 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
+    "copy-webpack-plugin": "^11.0.0",
     "eslint": "^8.25.0",
+    "fork-ts-checker-webpack-plugin": "^7.2.13",
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
     "webpack": "^5.74.0",

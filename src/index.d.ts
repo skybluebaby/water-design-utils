@@ -39,6 +39,8 @@ export type GenerateByLength = <T>(data: {
   isCutLast?: boolean;
 }) => T[][];
 
+export type Random = (min: number, max: number) => number;
+
 export type DeepClone = (data: Record<any, any>) => Record<any, any>;
 
 export interface WaterUtils {
@@ -50,6 +52,7 @@ export interface WaterUtils {
   filterByType: FilterByType;
   generateByLength: GenerateByLength;
   deepClone: DeepClone;
+  random: Random;
 }
 
 declare const throttle: Throttle;
@@ -60,6 +63,7 @@ declare const isValidObject: IsValidObject;
 declare const filterByType: FilterByType;
 declare const generateByLength: GenerateByLength;
 declare const deepClone: DeepClone;
+declare const random: Random;
 declare const waterUtils: WaterUtils;
 
 export {
@@ -71,6 +75,7 @@ export {
   filterByType,
   generateByLength,
   deepClone,
+  random,
 };
 
 export default waterUtils;

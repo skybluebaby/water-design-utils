@@ -7,6 +7,7 @@ import {
   FilterByType,
   GenerateByLength,
   DeepClone,
+  Random,
   WaterUtils,
 } from './index.d';
 
@@ -138,6 +139,15 @@ export const deepClone: DeepClone = (data) => {
   return tempData;
 };
 
+/**
+ * 获取min <= x < max之间的随机整数
+ * @param min 最小值
+ * @param max 最大值
+ * @returns number
+ */
+export const random: Random = (min, max) =>
+  Math.floor(Math.random() * (max - min)) + min;
+
 const waterUtils: WaterUtils = {
   throttle,
   debounce,
@@ -147,6 +157,7 @@ const waterUtils: WaterUtils = {
   filterByType,
   generateByLength,
   deepClone,
+  random,
 };
 
 export default waterUtils;

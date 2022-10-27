@@ -1,10 +1,12 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
+const ForkTSCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   mode: 'production',
   entry: './src/index.ts',
   output: {
-    filename: 'index.js',
+    filename: 'index.min.js',
     path: path.resolve(__dirname, './dist'),
     libraryTarget: 'umd',
   },
@@ -25,4 +27,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new ForkTSCheckerWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [{ from: './src/index.d.ts', to: './index.d.ts' }],
+    }),
+  ],
 };
