@@ -8,6 +8,7 @@ import {
   GenerateByLength,
   DeepClone,
   Random,
+  Memorize,
   WaterUtils,
 } from './index.d';
 
@@ -148,6 +149,40 @@ export const deepClone: DeepClone = (data) => {
 export const random: Random = (min, max) =>
   Math.floor(Math.random() * (max - min)) + min;
 
+/**
+ * 缓存函数，入参相同，记忆上次结果，优化性能
+ * @param {Function}
+ * @returns {Function}
+ */
+export const memorize: Memorize = (func, cache = new Map()) => {
+  // 目的解决JSON.stringify不能转换 Set Map的数据
+  const replacer = (_: any, value: any) => {
+    // 如果value是Set类型，则转为数组
+    if (value instanceof Set) {
+      return [...value];
+    }
+    // 如果value是Map类型，则转为对象
+    if (value instanceof Map) {
+      return Object.fromEntries(value);
+    }
+
+    return value;
+  };
+
+  return (...arg) => {
+    // 传入的参数json后变成的key
+    const argKey = JSON.stringify(arg, replacer);
+    //   若是与上次传的参数一样，则直接返回上次的结果
+    if (cache.has(argKey)) {
+      return cache.get(argKey);
+    }
+    //   计算结果，保存结果后再返回出去
+    const result = func(...arg);
+    cache.set(argKey, result);
+    return result;
+  };
+};
+
 const waterUtils: WaterUtils = {
   throttle,
   debounce,
@@ -158,6 +193,7 @@ const waterUtils: WaterUtils = {
   generateByLength,
   deepClone,
   random,
+  memorize,
 };
 
 export default waterUtils;

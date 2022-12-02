@@ -43,6 +43,11 @@ export type Random = (min: number, max: number) => number;
 
 export type DeepClone = (data: Record<any, any>) => Record<any, any>;
 
+export type Memorize<T = unknown> = (
+  func: (...args: any[]) => T,
+  cache?: Map<any, any>
+) => (...args: any[]) => T;
+
 export interface WaterUtils {
   throttle: Throttle;
   debounce: Debounce;
@@ -53,6 +58,7 @@ export interface WaterUtils {
   generateByLength: GenerateByLength;
   deepClone: DeepClone;
   random: Random;
+  memorize: Memorize;
 }
 
 declare const throttle: Throttle;
@@ -64,6 +70,7 @@ declare const filterByType: FilterByType;
 declare const generateByLength: GenerateByLength;
 declare const deepClone: DeepClone;
 declare const random: Random;
+declare const memorize: Memorize;
 declare const waterUtils: WaterUtils;
 
 export {
@@ -76,6 +83,7 @@ export {
   generateByLength,
   deepClone,
   random,
+  memorize,
 };
 
 export default waterUtils;

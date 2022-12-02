@@ -4,22 +4,42 @@
 
 ## 使用
 
-```ts
-import waterUtils, { deepClone， generateByLength } from 'water-design-utils';
+### filterByType
 
+```ts
+import waterUtils from 'water-design-utils';
 const arr = [1, '2', {}, []];
-const obj = { name: '张三', age: '88' };
-const otherArr = [1, 2, 3, 4, 5, 6, 7]
 
 const filterArr = waterUtils.filterByType({
   array: arr,
   type: ['number', 'object'],
 });
-console.log(filterArr); // [1, {}]
-console.log(deepClone(obj) === obj); // false
-const generateArr = generateByLength({ array: otherArr })
-console.log(generateArr) // [[1, 2], [3, 4], [5. 6], [7]]
+// filterArr = [1, {}]
+```
 
+### generateByLength
+
+```ts
+import { generateByLength } from 'water-design-utils';
+const arr = [1, 2, 3, 4, 5, 6, 7];
+const generateArr = generateByLength({ array: otherArr });
+// generateArr = [[1, 2], [3, 4], [5. 6], [7]]
+```
+
+### memorize
+
+```ts
+import { memorize } from 'water-design-utils';
+const sum = memorize(function (params) {
+  let sum = 0;
+  for (let i = 0; i < params.length; i++) {
+    sum += params[i];
+  }
+  console.log('执行');
+  return sum;
+});
+sum([1, 2, 3]);
+sum([1, 2, 3]); // 再次调用因入参相同将不再执行计算，直接返回缓存结果
 ```
 
 ## API
@@ -34,4 +54,5 @@ console.log(generateArr) // [[1, 2], [3, 4], [5. 6], [7]]
 | `filterByType`     | 通过传入一个数组和相应的筛选子项的类型，可过滤出符合条件的数组                     | ^1.0.0 |
 | `generateByLength` | 将数组切割为指定 length 的二维数组，可传参过滤掉最后一段长度小于指定 length 的数组 | ^1.0.0 |
 | `deepClone`        | 对传入的对象和数组进行深拷贝，不支持包含函数等非对象和数组的复杂数据类型的拷贝     | ^1.0.0 |
-| `random`           | 获取 min <= x < max 之间的随机整数                                                 | ^1.0.2 |
+| `random`           | 获取 min <= x < max 之间的随机整数                                                 | ^1.0.1 |
+| `memorize`         | 缓存函数，入参相同，记忆上次结果，优化性能                                         | ^1.0.2 |
