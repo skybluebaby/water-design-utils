@@ -22,8 +22,8 @@ const filterArr = waterUtils.filterByType({
 ```ts
 import { generateByLength } from 'water-design-utils';
 const arr = [1, 2, 3, 4, 5, 6, 7];
-const generateArr = generateByLength({ array: otherArr });
-// generateArr = [[1, 2], [3, 4], [5. 6], [7]]
+const generateArr = generateByLength({ array: arr });
+// generateArr = [[1, 2], [3, 4], [5, 6], [7]]
 ```
 
 ### memorize

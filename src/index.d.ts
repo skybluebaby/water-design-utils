@@ -43,10 +43,10 @@ export type Random = (min: number, max: number) => number;
 
 export type DeepClone = (data: Record<any, any>) => Record<any, any>;
 
-export type Memorize<T = unknown> = (
-  func: (...args: any[]) => T,
+export type Memorize<T = unknown, U = any> = (
+  func: (...args: U[]) => T,
   cache?: Map<any, any>
-) => (...args: any[]) => T;
+) => (...args: U[]) => T;
 
 export interface WaterUtils {
   throttle: Throttle;
